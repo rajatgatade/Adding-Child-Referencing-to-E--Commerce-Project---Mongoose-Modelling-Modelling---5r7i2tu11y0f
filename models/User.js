@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 /*
- Add a child referencing relationship between User and Product. Create a new field in the User model called productsPurchased. This field should be an array of Product IDs.
+
 */
 const userSchema = new mongoose.Schema(
     {
@@ -35,11 +35,13 @@ const userSchema = new mongoose.Schema(
                     throw new Error('password should be atleast 8 characters long');
                 }
             },
-        }
-        // Add child referencing relationship here
+        }, 
+        productsPurchased: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }]
     },
     { timestamps: true }
 );
 
 module.exports = mongoose.model('User', userSchema);
-
