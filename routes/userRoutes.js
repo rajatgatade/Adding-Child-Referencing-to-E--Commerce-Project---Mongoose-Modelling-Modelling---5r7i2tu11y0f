@@ -16,10 +16,8 @@ const { grantAccessTo } = require('../middlewares/grantAccessTo');
 
 const router = express.Router();
 
-/*
-    Add a route declaration PATCH /add-product to add a product to the user's productsPurchased array.
-*/
-// Add your route here 
+// Add a route declaration /add-product here.
+router.patch("/add-product", addProductToUser);
 
 // Public Routes
 router.post("/", grantAccessTo(['guest', 'admin', 'superadmin']), createUser);
